@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GymNexus — Greater Noida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/landing.css">
+</head>
+<body class="landing">
+
+<nav class="navbar glass">
+  <div class="mark">GYM<span>NEXUS</span></div>
+  <div class="actions">
+    <button class="btn-outline" onclick="openAuth('login')">Log In</button>
+    <button class="btn-glow" onclick="openAuth('signup')">Sign Up</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-logo">GYM<span>NEXUS</span></div>
+    <div class="eyebrow">Greater Noida · Pari Chowk</div>
+    <h1>Train hard. Recover smart. Get results that stick.</h1>
+    <p>A full-service fitness club offering strength training, guided nutrition, and certified coaching — all under one roof, minutes from Pari Chowk.</p>
+    <div class="founder-note">Founded by <strong>Abhinav Singh</strong></div>
+    <div class="cta-row">
+      <button class="btn-glow lg pulse" onclick="openAuth('signup')">Join GymNexus</button>
+      <button class="scroll-hint" onclick="document.getElementById('facilities').scrollIntoView({behavior:'smooth'})">Scroll down to explore ↓</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <img src="assets/bodybuilder.png" alt="GymNexus">
+  </div>
+</section>
+
+<!-- ABOUT / OWNER -->
+<section class="section" id="about">
+  <div class="section-inner glass">
+    <div class="about-grid">
+      <div>
+        <div class="section-head"><h2>About GymNexus</h2></div>
+        <p>Established in 2021, GymNexus has grown into one of Greater Noida's most trusted fitness clubs, built around a simple idea: consistent training, honest coaching, and a plan that fits your life — not the other way around. Founded by <strong>Abhinav Singh</strong>.</p>
+        <p>Every member gets access to a certified trainer, a diet plan tailored to their goals, and a club that's open early enough and late enough to fit around work and college.</p>
+      </div>
+      <div class="bmi-card glass">
+        <h3>BMI Calculator</h3>
+        <p class="bmi-sub">Check your Body Mass Index</p>
+        <div class="form-row">
+          <input id="bmiHeight" type="number" placeholder="Height (cm)">
+          <input id="bmiWeight" type="number" placeholder="Weight (kg)">
+        </div>
+        <button class="action" onclick="calculateBMI()">Calculate BMI</button>
+        <div id="bmiResult" class="bmi-result"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section class="section" id="facilities">
+  <div class="section-inner glass">
+    <div class="section-head">
+      <h2>Facilities</h2>
+      <p>Everything you need for strength, recovery, and consistency, in one club.</p>
+    </div>
+    <div class="facility-grid">
+      <div class="facility-card info-card">
+        <span class="icon">🏋️</span>
+        <h3>Free Weights & Strength Zone</h3>
+        <p>A full range of barbells, dumbbells, kettlebells, and power racks for squats, deadlifts, and presses — built for serious strength training at every level, from first-timers to experienced lifters.</p>
+      </div>
+      <div class="facility-card info-card">
+        <span class="icon">🏃</span>
+        <h3>Cardio Zone</h3>
+        <p>Treadmills, stationary cycles, and rowing machines with heart-rate tracking, laid out for both quick HIIT sessions and longer steady-state cardio.</p>
+      </div>
+      <div class="facility-card info-card">
+        <span class="icon">💪</span>
+        <h3>Certified Personal Trainers</h3>
+        <p>One-on-one coaching from certified trainers who build your workout plan around your goals, experience level, and schedule, and adjust it as you progress.</p>
+      </div>
+      <div class="facility-card info-card">
+        <span class="icon">🥗</span>
+        <h3>Customized Diet Plans</h3>
+        <p>Nutrition plans designed by your trainer and reviewed regularly — covering meal timing, macros, and portion sizes based on whether you're cutting, bulking, or maintaining.</p>
+      </div>
+      <div class="facility-card info-card">
+        <span class="icon">🧘</span>
+        <h3>Yoga & Mobility Studio</h3>
+        <p>A dedicated, quieter space for yoga, stretching, and mobility work — ideal for warm-ups, injury-safe recovery, and improving flexibility alongside your strength training.</p>
+      </div>
+      <div class="facility-card info-card">
+        <span class="icon">🚿</span>
+        <h3>Locker & Shower Rooms</h3>
+        <p>Clean, secure changing rooms with individual lockers and hot-water showers, so you can head straight to work or college after your session.</p>
+      </div>
+      <div class="facility-card info-card">
+        <span class="icon">🕺</span>
+        <h3>Group Classes & Zumba</h3>
+        <p>High-energy group sessions — Zumba, HIIT, and functional training — for members who train better with music and a crowd instead of solo.</p>
+      </div>
+      <div class="facility-card info-card">
+        <span class="icon">🧖</span>
+        <h3>Steam Room & Recovery</h3>
+        <p>A steam room and dedicated recovery corner for muscle relaxation and stiffness relief after heavy training days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMINGS -->
+<section class="section" id="timings">
+  <div class="section-inner glass">
+    <div class="section-head"><h2>Timings</h2></div>
+    <div class="timings-single">
+      <div class="icon-big">⏰</div>
+      <div>
+        <h3>Open all 7 days a week</h3>
+        <p>GymNexus is open every single day, so you never have to skip a session because of a weekly off. Early risers, working professionals, and students can all find a slot that fits.</p>
+        <div class="hours">5:00 AM – 10:00 PM, Monday to Sunday</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="section" id="location">
+  <div class="section-inner glass">
+    <div class="section-head"><h2>Location</h2></div>
+    <div class="info-list">
+      <div class="row"><div class="k">Address</div><div class="v">2nd Floor, Alpha Commercial Belt, Near Pari Chowk, Greater Noida, Gautam Buddha Nagar, Uttar Pradesh – 201310</div></div>
+      <div class="row"><div class="k">Landmark</div><div class="v">5 minutes' walk from Pari Chowk Metro Station, opposite the Pari Chowk roundabout</div></div>
+      <div class="row"><div class="k">City</div><div class="v">Greater Noida, Gautam Buddha Nagar, Uttar Pradesh</div></div>
+      <div class="row"><div class="k">PIN Code</div><div class="v">201310</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-inner glass">
+    <div class="section-head">
+      <h2>Contact Us</h2>
+      <p>Questions about membership, trials, or trainers — reach out any time.</p>
+    </div>
+    <div class="info-list">
+      <div class="row"><div class="k">Email</div><div class="v">Abhisiingh8789@gmail.com</div></div>
+      <div class="row"><div class="k">Address</div><div class="v">Alpha Commercial Belt, Near Pari Chowk, Greater Noida</div></div>
+      <div class="row"><div class="k">LinkedIn</div><div class="v">
+        <a class="social-link" href="https://www.linkedin.com/in/abhinav-singh-5790a42b5/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          <span>Connect on LinkedIn</span>
+        </a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="mark">GYM<span>NEXUS</span></div>
+  <div>© 2026 GymNexus, Pari Chowk, Greater Noida. Founded by Abhinav Singh.</div>
+</footer>
+
+<!-- AUTH MODAL -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal-box glass">
+    <div class="modal-head">
+      <h2>Welcome to GymNexus</h2>
+      <button class="modal-close" onclick="closeAuth()">✕</button>
+    </div>
+    <div class="modal-tabs">
+      <button id="tabLogin" class="active" onclick="switchTab('login')">Log In</button>
+      <button id="tabSignup" onclick="switchTab('signup')">Sign Up</button>
+    </div>
+    <div class="modal-body">
+      <form class="modal-form active" id="formLogin" onsubmit="event.preventDefault(); submitAuth('login')">
+        <label>Email or Phone</label>
+        <input id="loginId" placeholder="you@example.com" required>
+        <label>Password</label>
+        <input id="loginPass" type="password" placeholder="••••••••" required>
+        <label>Log In As</label>
+        <select id="loginRole">
+          <option value="member">Member</option>
+          <option value="admin">Admin</option>
+        </select>
+        <button type="submit" class="btn-glow">Log In</button>
+      </form>
+      <form class="modal-form" id="formSignup" onsubmit="event.preventDefault(); submitAuth('signup')">
+        <label>Full Name</label>
+        <input id="suName" placeholder="Your name" required>
+        <label>Phone</label>
+        <input id="suPhone" placeholder="Phone number" required>
+        <label>Password</label>
+        <input id="suPass" type="password" placeholder="Create a password" required>
+        <label>Choose a Plan</label>
+        <select id="suPlan">
+          <option value="monthly">Monthly — ₹1,500 / month</option>
+          <option value="quarterly">Quarterly — ₹4,000 / 3 months</option>
+          <option value="yearly">Yearly — ₹12,000 / year</option>
+        </select>
+        <button type="submit" class="btn-glow">Create Account</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="js/landing.js"></script>
+</body>
+</html>

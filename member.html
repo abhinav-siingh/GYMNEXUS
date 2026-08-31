@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GymNexus — My Account</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="shell">
+  <aside class="sidebar glass">
+    <div class="brand">
+      <div class="mark">GYM<span>NEXUS</span></div>
+      <div class="sub">Member Portal</div>
+    </div>
+    <nav id="nav">
+      <button class="active" data-section="overview"><span class="dot"></span>Overview</button>
+      <button data-section="subscription"><span class="dot"></span>My Subscription</button>
+      <button data-section="attendance"><span class="dot"></span>My Attendance</button>
+      <button data-section="diet"><span class="dot"></span>My Diet Plan</button>
+      <button data-section="trainer"><span class="dot"></span>My Trainer</button>
+    </nav>
+    <div class="sidebar-foot">Logged in as<br><strong id="footName">Member</strong><br><a href="index.html" style="color:var(--blue); text-decoration:none;">← Back to Home</a></div>
+  </aside>
+
+  <main>
+    <div class="topbar glass">
+      <h1 id="pageTitle">Overview</h1>
+      <div class="meta" id="todayDate"></div>
+    </div>
+
+    <div class="content">
+
+      <!-- OVERVIEW -->
+      <section class="section active" id="sec-overview">
+        <div class="panel glass profile-card">
+          <div class="avatar" id="avatarInitials">PN</div>
+          <div>
+            <div class="pname" id="profileName">—</div>
+            <div class="pmeta" id="profileMeta">—</div>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-block glass"><div class="num accent" id="statDaysLeft">0</div><div class="label">Days Left in Plan</div></div>
+          <div class="stat-block glass"><div class="num" id="statAttendance">0</div><div class="label">Check-ins This Month</div></div>
+          <div class="stat-block glass"><div class="num" id="statStreak">0</div><div class="label">Current Streak</div></div>
+          <div class="stat-block glass"><div class="num" id="statPlan">—</div><div class="label">Current Plan</div></div>
+        </div>
+
+        <div class="panel glass">
+          <div class="panel-head"><h2>Last 7 Days</h2></div>
+          <div class="panel-body">
+            <div class="day-strip" id="daysOverview"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SUBSCRIPTION -->
+      <section class="section" id="sec-subscription">
+        <div class="panel glass">
+          <div class="panel-head"><h2>Current Subscription</h2><span class="pill" id="subPill">—</span></div>
+          <div class="panel-body">
+            <table>
+              <tbody>
+                <tr><td>Plan</td><td id="subPlan">—</td></tr>
+                <tr><td>Start Date</td><td id="subStart">—</td></tr>
+                <tr><td>End Date</td><td id="subEnd">—</td></tr>
+                <tr><td>Days Remaining</td><td id="subDaysLeft">—</td></tr>
+              </tbody>
+            </table>
+            <div style="margin-top:16px;">
+              <button class="action" onclick="renewSubscription()">Renew Plan</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ATTENDANCE -->
+      <section class="section" id="sec-attendance">
+        <div class="panel glass">
+          <div class="panel-head">
+            <h2>My Attendance</h2>
+            <button class="action" onclick="checkInToday()">Check In Today</button>
+          </div>
+          <div class="panel-body">
+            <div class="day-strip" id="daysAttendance"></div>
+            <table style="margin-top:18px;">
+              <thead><tr><th>Date</th><th>Status</th><th>Time</th></tr></thead>
+              <tbody id="attHistoryBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- DIET -->
+      <section class="section" id="sec-diet">
+        <div class="panel glass">
+          <div class="panel-head"><h2>My Diet Plan</h2></div>
+          <div class="panel-body" id="dietBody">
+          </div>
+        </div>
+      </section>
+
+      <!-- TRAINER -->
+      <section class="section" id="sec-trainer">
+        <div class="panel glass">
+          <div class="panel-head"><h2>Assigned Trainer</h2></div>
+          <div class="panel-body">
+            <div class="grid-cards" id="trainerCard"></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script src="js/member.js"></script>
+</body>
+</html>
