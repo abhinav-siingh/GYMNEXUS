@@ -24,7 +24,7 @@
       <button data-section="subscriptions"><span class="dot"></span>Subscriptions</button>
       <button data-section="diet"><span class="dot"></span>Diet Plans</button>
     </nav>
-    <div class="sidebar-foot">Signed in as<br><strong>Admin</strong><br><a href="index.html" style="color:var(--blue); text-decoration:none;">← Back to Home</a></div>
+    <div class="sidebar-foot">Signed in as<br><strong>Admin</strong><br><a href="#" onclick="logout(); return false;" style="color:var(--blue); text-decoration:none;">← Log Out</a></div>
   </aside>
 
   <main>
@@ -58,25 +58,10 @@
       <!-- MEMBERS -->
       <section class="section" id="sec-members">
         <div class="panel glass">
-          <div class="panel-head"><h2>Add Member</h2></div>
-          <div class="panel-body">
-            <div class="form-row">
-              <input id="mName" placeholder="Full name">
-              <input id="mPhone" placeholder="Phone number">
-              <select id="mPlan">
-                <option>Monthly</option>
-                <option>Quarterly</option>
-                <option>Yearly</option>
-              </select>
-              <button class="action" onclick="addMember()">Add Member</button>
-            </div>
-          </div>
-        </div>
-        <div class="panel glass">
           <div class="panel-head"><h2>All Members</h2></div>
           <div class="panel-body">
             <table>
-              <thead><tr><th>Name</th><th>Phone</th><th>Plan</th><th>Joined</th><th>Status</th></tr></thead>
+              <thead><tr><th>Name</th><th>Phone</th><th>Plan</th><th>Joined</th><th>Status</th><th>Trainer</th></tr></thead>
               <tbody id="membersBody"></tbody>
             </table>
           </div>
@@ -85,6 +70,17 @@
 
       <!-- TRAINERS -->
       <section class="section" id="sec-trainers">
+        <div class="panel glass">
+          <div class="panel-head"><h2>Add Trainer</h2></div>
+          <div class="panel-body">
+            <div class="form-row">
+              <input id="tName" placeholder="Trainer name">
+              <input id="tSpec" placeholder="Specialization">
+              <input id="tContact" placeholder="Contact email">
+              <button class="action" onclick="addTrainer()">Add Trainer</button>
+            </div>
+          </div>
+        </div>
         <div class="panel glass">
           <div class="panel-head"><h2>Trainer Roster</h2></div>
           <div class="panel-body">

@@ -25,7 +25,7 @@
     <div class="hero-logo">GYM<span>NEXUS</span></div>
     <div class="eyebrow">Greater Noida · Pari Chowk</div>
     <h1>Train hard. Recover smart. Get results that stick.</h1>
-    <p>A full-service fitness club offering strength training, guided nutrition, and certified coaching — all under one roof, minutes from Pari Chowk.</p>
+    <p>GymNexus is a modern fitness club focused on helping you build strength, improve fitness, and maintain a healthier lifestyle. Get personalized workout plans, daily diet guidance, trainer support, and easy membership management—all in one place.</p>
     <div class="founder-note">Founded by <strong>Abhinav Singh</strong></div>
     <div class="cta-row">
       <button class="btn-glow lg pulse" onclick="openAuth('signup')">Join GymNexus</button>
@@ -188,6 +188,7 @@
           <option value="admin">Admin</option>
         </select>
         <button type="submit" class="btn-glow">Log In</button>
+        <div id="loginError" class="auth-error"></div>
       </form>
       <form class="modal-form" id="formSignup" onsubmit="event.preventDefault(); submitAuth('signup')">
         <label>Full Name</label>
@@ -203,6 +204,7 @@
           <option value="yearly">Yearly — ₹12,000 / year</option>
         </select>
         <button type="submit" class="btn-glow">Create Account</button>
+        <div id="signupError" class="auth-error"></div>
       </form>
     </div>
   </div>

@@ -51,7 +51,7 @@ body.landing .section{display:block;}
   padding:64px 28px 76px; margin:26px auto 0; max-width:1320px;
   display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:40px;
 }
-.hero-content{display:flex; flex-direction:column; align-items:flex-start; gap:20px; flex:1; min-width:0;}
+.hero-content{display:flex; flex-direction:column; align-items:flex-start; gap:16px; flex:1; min-width:0;}
 .hero-visual{flex:0 0 auto; width:400px; display:flex; justify-content:center; align-items:center;}
 .hero-visual img{width:100%; max-width:400px; height:auto; display:block;}.hero-logo{
   font-family:'Poppins',sans-serif; font-weight:800; font-size:58px; line-height:1;
@@ -163,3 +163,4 @@ footer .mark span{color:var(--orange);}
   .about-grid, .contact-grid{grid-template-columns:1fr;}
   footer{flex-direction:column; gap:12px; text-align:center;}
 }
+.auth-error{display:none; color:var(--bad); font-size:12.5px; margin-top:8px;}

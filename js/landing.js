@@ -1,9 +1,9 @@
 // ============================================
-// GymNexus — Landing Page Logic
-// (Mock auth: in the real app, this calls the
-//  Spring Boot /api/auth endpoints and redirects
-//  based on the returned role/token)
+// GymNexus — Landing Page Logic (connected to
+// the real Spring Boot backend)
 // ============================================
+
+const API_BASE = 'http://localhost:8080/api';
 
 function openAuth(tab){
   document.getElementById('authModal').classList.add('open');
@@ -19,33 +19,77 @@ function switchTab(tab){
   document.getElementById('tabSignup').classList.toggle('active', tab==='signup');
   document.getElementById('formLogin').classList.toggle('active', tab==='login');
   document.getElementById('formSignup').classList.toggle('active', tab==='signup');
+  clearErrors();
 }
 
-function submitAuth(type){
+function showError(formType, message){
+  const el = document.getElementById(formType === 'login' ? 'loginError' : 'signupError');
+  if(el){ el.textContent = message; el.style.display = 'block'; }
+}
+
+function clearErrors(){
+  ['loginError','signupError'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el){ el.style.display = 'none'; el.textContent = ''; }
+  });
+}
+
+function saveSession(data){
+  localStorage.setItem('gymnexus_token', data.token);
+  localStorage.setItem('gymnexus_role', data.role);
+  localStorage.setItem('gymnexus_name', data.name);
+  localStorage.setItem('gymnexus_id', data.id);
+}
+
+async function submitAuth(type){
+  clearErrors();
+
   if(type === 'login'){
-    const role = document.getElementById('loginRole').value;
-    window.location.href = role === 'admin' ? 'admin.html' : 'member.html';
+    const phone = document.getElementById('loginId').value.trim();
+    const password = document.getElementById('loginPass').value;
+    try{
+      const res = await fetch(`${API_BASE}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone, password })
+      });
+      if(!res.ok){
+        const err = await res.json().catch(()=>({}));
+        showError('login', err.message || 'Invalid phone number or password.');
+        return;
+      }
+      const data = await res.json();
+      saveSession(data);
+      window.location.href = data.role === 'ADMIN' ? 'admin.html' : 'member.html';
+    } catch(e){
+      showError('login', 'Could not reach the server — is the backend running on port 8080?');
+    }
     return;
   }
 
-  // Signup is always for members — the admin is the gym owner and only
-  // ever logs in, never signs up.
-  // (Real version: this would be a POST to /api/members, and the
-  //  dashboard would load the new member by their returned ID/token.)
+  // Signup is always for members.
   const name = document.getElementById('suName').value.trim();
   const phone = document.getElementById('suPhone').value.trim();
+  const password = document.getElementById('suPass').value;
   const plan = document.getElementById('suPlan').value;
 
-  // Shared storage so the admin portal sees this member without a backend.
-  // Once the real Spring Boot API exists, this becomes a POST /api/members
-  // call instead, and the admin dashboard fetches the live member list.
-  const newMember = { name, phone, plan, joined: new Date().toISOString().split('T')[0] };
-  const existing = JSON.parse(localStorage.getItem('gymnexus_signups') || '[]');
-  existing.push(newMember);
-  localStorage.setItem('gymnexus_signups', JSON.stringify(existing));
-
-  const params = new URLSearchParams({ name, phone, plan });
-  window.location.href = 'member.html?' + params.toString();
+  try{
+    const res = await fetch(`${API_BASE}/auth/signup`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, phone, password, plan })
+    });
+    if(!res.ok){
+      const err = await res.json().catch(()=>({}));
+      showError('signup', err.message || 'Signup failed — please check your details.');
+      return;
+    }
+    const data = await res.json();
+    saveSession(data);
+    window.location.href = 'member.html';
+  } catch(e){
+    showError('signup', 'Could not reach the server — is the backend running on port 8080?');
+  }
 }
 
 function calculateBMI(){
@@ -66,7 +110,6 @@ function calculateBMI(){
   resultEl.innerHTML = `<span class="bmi-value">${bmi.toFixed(1)}</span><span class="pill ${cls}">${category}</span>`;
 }
 
-// Close modal when clicking the dark overlay (not the box itself)
 document.getElementById('authModal').addEventListener('click', (e)=>{
   if(e.target.id === 'authModal') closeAuth();
 });
