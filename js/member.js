@@ -1,5 +1,5 @@
 // ============================================
-// GymNexus — Member Portal Logic (connected to
+// my GymNexus — Member Portal Logic (connected to
 // the real Spring Boot backend)
 // ============================================
 
@@ -27,7 +27,8 @@ let member = null;
 let trainerInfo = null;
 let dietAuto = null;
 let dietAdditional = null;
-let attendanceLog = []; // array of { date, checkInTime } — only PRESENT days exist as rows
+let attendanceLog = [];
+ // array of { date, checkInTime } — only PRESENT days exist as rows
 
 function initials(name) {
   return name.split(' ').filter(Boolean).map(p => p[0]).join('').toUpperCase().slice(0, 2) || '?';
