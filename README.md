@@ -106,7 +106,7 @@ GYMNEXUS/
 │   └── .gitignore
 │
 └── README.md
-```text
+```
 
 ## 🎯 Project Objectives
 
