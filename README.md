@@ -89,16 +89,6 @@ Personalized workout and nutrition suggestions
 
 ---
 
-## 📜 License
-
-This project is developed for **educational and academic purposes**.
-
-<div align="center">
-
-⭐ **If you found this project helpful, consider giving it a star!** ⭐
-
-</div>
----
 
 ## 🚀 Features
 
@@ -310,9 +300,13 @@ GYMNEXUS can be further enhanced with advanced features to create a more complet
 💻 **Full-Stack Developer | Java | Spring Boot | Web Development**
 
 ---
-
 ## 📜 License
 
 This project is developed for **educational and academic purposes**.
 
+<div align="center">
+
+⭐ **If you found this project helpful, consider giving it a star!** ⭐
+
+</div>
 ---
