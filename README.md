@@ -81,7 +81,21 @@ The project provides a modern web-based frontend along with a Spring Boot REST A
 GYMNEXUS/
 │
 ├── frontend/
-│   └── Frontend source files
+│   ├── index.html                  # Landing page (public) + login/signup modal
+│   ├── member.html                 # Member portal (protected)
+│   ├── admin.html                  # Admin console (protected)
+│   │
+│   ├── css/
+│   │   ├── style.css               # Shared theme (charcoal + blue, dashboards)
+│   │   └── landing.css             # Landing-page-only styles (navbar, hero, modal)
+│   │
+│   ├── js/
+│   │   ├── landing.js              # Auth (signup/login), BMI calculator
+│   │   ├── member.js               # Member dashboard — profile, attendance, diet
+│   │   └── admin.js                # Admin dashboard — members, trainers, diet
+│   │
+│   └── assets/
+│       └── bodybuilder.png         # Hero image
 │
 ├── backend/
 │   ├── src/
@@ -89,17 +103,72 @@ GYMNEXUS/
 │   │       ├── java/
 │   │       │   └── com/
 │   │       │       └── gymnexus/
+│   │       │           ├── GymnexusBackendApplication.java
+│   │       │           │
 │   │       │           ├── config/
+│   │       │           │   ├── SecurityConfig.java        # Routes, CORS, BCrypt
+│   │       │           │   └── DataSeeder.java            # Seeds admin, trainers, diets
+│   │       │           │
 │   │       │           ├── controller/
+│   │       │           │   ├── AuthController.java        # /api/auth
+│   │       │           │   ├── MemberController.java      # /api/members
+│   │       │           │   ├── TrainerController.java     # /api/trainers
+│   │       │           │   ├── AttendanceController.java  # /api/attendance
+│   │       │           │   ├── SubscriptionController.java# /api/subscriptions
+│   │       │           │   └── DietController.java        # /api/diet
+│   │       │           │
 │   │       │           ├── dto/
+│   │       │           │   ├── SignupRequest.java
+│   │       │           │   ├── LoginRequest.java
+│   │       │           │   ├── AuthResponse.java
+│   │       │           │   ├── MemberResponse.java
+│   │       │           │   ├── TrainerRequest.java
+│   │       │           │   ├── AssignTrainerRequest.java
+│   │       │           │   ├── AttendanceMarkRequest.java
+│   │       │           │   ├── AttendanceResponse.java
+│   │       │           │   ├── DietAssignRequest.java
+│   │       │           │   ├── DietPlanResponse.java
+│   │       │           │   └── SubscriptionResponse.java
+│   │       │           │
 │   │       │           ├── entity/
+│   │       │           │   ├── User.java                  # Admin + members (role-based)
+│   │       │           │   ├── Role.java                  # ADMIN | MEMBER
+│   │       │           │   ├── Trainer.java
+│   │       │           │   ├── Subscription.java
+│   │       │           │   ├── PlanType.java              # MONTHLY | QUARTERLY | YEARLY
+│   │       │           │   ├── Attendance.java
+│   │       │           │   ├── DietPlan.java              # Admin-assigned extra plan
+│   │       │           │   └── DietTemplate.java          # Auto day-wise plan
+│   │       │           │
 │   │       │           ├── exception/
+│   │       │           │   ├── GlobalExceptionHandler.java
+│   │       │           │   ├── ResourceNotFoundException.java
+│   │       │           │   └── DuplicateResourceException.java
+│   │       │           │
 │   │       │           ├── repository/
+│   │       │           │   ├── UserRepository.java
+│   │       │           │   ├── TrainerRepository.java
+│   │       │           │   ├── SubscriptionRepository.java
+│   │       │           │   ├── AttendanceRepository.java
+│   │       │           │   ├── DietPlanRepository.java
+│   │       │           │   └── DietTemplateRepository.java
+│   │       │           │
 │   │       │           ├── security/
+│   │       │           │   ├── JwtUtil.java                   # Token generate/validate
+│   │       │           │   ├── JwtAuthFilter.java             # Per-request auth filter
+│   │       │           │   └── CustomUserDetailsService.java  # Loads user by phone
+│   │       │           │
 │   │       │           └── service/
+│   │       │               ├── AuthService.java
+│   │       │               ├── MemberService.java
+│   │       │               ├── TrainerService.java
+│   │       │               ├── AttendanceService.java
+│   │       │               ├── SubscriptionService.java
+│   │       │               ├── DietService.java
+│   │       │               └── SubscriptionStatusHelper.java
 │   │       │
 │   │       └── resources/
-│   │           └── application.properties
+│   │           └── application.properties      # MySQL + JPA + JWT config
 │   │
 │   ├── pom.xml
 │   ├── README.md
